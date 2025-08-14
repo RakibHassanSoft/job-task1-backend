@@ -68,18 +68,9 @@ Visit: **http://localhost:Port** to view the app.
  
 ---  
  
-### Frontend (React.js or Next.js)  
-- **Add Expense Form** → Fields: `title`, `amount`, `category`, `date`  
-- **Expense List View** → Shows all expenses in **table** or **card layout**  
-- **Total Expense Amount** displayed at the top  
-- **Category Badges** for quick visual identification  
-- **Edit Button** → Pre-fills form with existing values  
-- **Delete Button** → Removes expense from list & database  
- 
----  
+
  
 ## Tech Stack  
-- **Frontend:** React.js or Next.js, Axios, TailwindCSS/Bootstrap  
 - **Backend:** Node.js, Express.js  
 - **Database:** MongoDB (Mongoose ODM)  
 - **Validation:** express-validator / Joi  
