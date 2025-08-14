@@ -1,9 +1,12 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "\"# job-task1-backend\"",
-  "main": "index.js",
+  "description": "Job task backend server",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -17,9 +20,14 @@
     "express-rate-limit": "^8.0.1",
     "helmet": "^8.1.0",
     "http-errors": "^2.0.0",
+    "joi": "^18.0.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.17.1",
     "morgan": "^1.10.1",
+    "validator": "^13.15.15",
     "zod": "^4.0.17"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }
