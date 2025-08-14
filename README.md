@@ -48,7 +48,7 @@ npm install --save-dev nodemon@^3.1.0
 ```  
  
 ### 4️⃣ Open in Browser  
-Visit: **http://localhost:Port** to view the app.  
+Visit: **http://localhost:Port/api/v1** to view the app.  
  
 ---  
  
