@@ -20,7 +20,7 @@ import { ApiError } from "../utils/ApiError.js";
  * @param {Response} res - The Express response object.
  * @param {Function} _next - The next middleware function (unused here).
  */
-export const errorHandler = (err, req, res, _next) => {
+export const globalErrorHandler = (err, req, res, _next) => {
   // Log error for debugging purposes (can be replaced with a logging service)
   console.error(err);
 

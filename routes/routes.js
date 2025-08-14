@@ -5,6 +5,6 @@ const router = express.Router();
 
 
 // User routes
-router.use("/user", userRouter);
+router.use("/auth", userRouter);
 
 export default router;

@@ -17,3 +17,4 @@ export const connectDB = async () => {
     // process.exit(1); // Stop server if DB connection fails
   }
 };
+

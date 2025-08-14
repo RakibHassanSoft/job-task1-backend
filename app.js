@@ -5,7 +5,7 @@ import cors from "cors";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import rateLimit from "express-rate-limit";
-import { errorHandler } from "./middlewares/errorHandler.js";
+import { globalErrorHandler } from "./middlewares/errorHandler.js";
 import { ApiError } from "./utils/ApiError.js";
 
 
@@ -40,7 +40,10 @@ app.use(
 
 
 // ===== Routes =====
-app.use("/api/vq", routes);
+app.use("/api/v1", routes);
+app.use("/api/v1", (req, res) => {
+  res.send("Server is running successfully! Welcome to the API.");
+});
 
 
 
@@ -50,6 +53,6 @@ app.use((req, res, next) => {
 });
 
 // ===== Error Handler =====
-app.use(errorHandler);
+app.use(globalErrorHandler);
 
 export default app;

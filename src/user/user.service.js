@@ -4,10 +4,9 @@ import { User } from "./index.js";
 import { signAccessToken } from "../../utils/jwt.js";
 import { config } from "../../config/env.provider.js";
 
-
 const cookieOptions = {
   httpOnly: true,
-  secure:config.NODE_ENV === "production",
+  secure: config.NODE_ENV === "production",
   sameSite: config.NODE_ENV === "production" ? "none" : "lax",
   path: "/",
   maxAge: 24 * 60 * 60 * 1000, // 1 day
