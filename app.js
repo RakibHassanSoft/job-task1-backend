@@ -41,7 +41,7 @@ app.use(
 
 // ===== Routes =====
 app.use("/api/v1", routes);
-app.use("/api/v1", (req, res) => {
+app.use("/", (req, res) => {
   res.send("Server is running successfully! Welcome to the API.");
 });
 
