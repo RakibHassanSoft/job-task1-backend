@@ -18,8 +18,16 @@ export const create = async (req, res, next) => {
  */
 export const getAll = async (req, res, next) => {
   try {
-    const expenses = await expanceService.getAllExpenses(req.user._id);
+    const { category, startDate, endDate } = req.query;
+
+    const filters = {};
+    if (category) filters.category = category;
+    if (startDate) filters.startDate = startDate;
+    if (endDate) filters.endDate = endDate;
+
+    const expenses = await expanceService.getAllExpenses(req.user._id, filters);
     responseHandler(res, expenses, "Expenses fetched successfully");
+  
   
   } catch (err) {
     next(err);

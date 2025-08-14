@@ -96,6 +96,15 @@ Visit: **http://localhost:Port/api/v1** to view the app.
 ```  
  
 ---  
+## Test in postman by this files
+```  
+ Server/
+   auth.postman_collection.json
+   Expance.postman_collection.json
+     
+```  
+ 
+---  
  
 ## API Endpoints  
  

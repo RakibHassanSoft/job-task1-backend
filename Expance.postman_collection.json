@@ -1,0 +1,286 @@
+{
+	"info": {
+		"_postman_id": "3123d505-ec5b-4512-80e1-8d7ebbfa8247",
+		"name": "Expance",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27232000",
+		"_collection_link": "https://warped-crescent-709634.postman.co/workspace/Job-task-1~ac7c8523-7c8a-4d87-bf3f-e2a8a76a4988/collection/27232000-3123d505-ec5b-4512-80e1-8d7ebbfa8247?action=share&source=collection_link&creator=27232000"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Dinner\",\r\n  \"amount\": 12000,\r\n  \"category\": \"Food\",\r\n  \"date\": \"2025-08-14\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base_URL}}/expense/create",
+					"host": [
+						"{{Base_URL}}"
+					],
+					"path": [
+						"expense",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": 12\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base_URL}}/expense/update/689db5552162ab6c0f721a44",
+					"host": [
+						"{{Base_URL}}"
+					],
+					"path": [
+						"expense",
+						"update",
+						"689db5552162ab6c0f721a44"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amount\": 12\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base_URL}}/expense/delete/689db5552162ab6c0f721a44",
+					"host": [
+						"{{Base_URL}}"
+					],
+					"path": [
+						"expense",
+						"delete",
+						"689db5552162ab6c0f721a44"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Lunch at Cafe\",\r\n  \"amount\": 12.5,\r\n  \"category\": \"Food\",\r\n  \"date\": \"2025-08-14\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base_URL}}/expense/all",
+					"host": [
+						"{{Base_URL}}"
+					],
+					"path": [
+						"expense",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all by category",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Lunch at Cafe\",\r\n  \"amount\": 12.5,\r\n  \"category\": \"Food\",\r\n  \"date\": \"2025-08-14\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base_URL}}/expense/all?category=Food",
+					"host": [
+						"{{Base_URL}}"
+					],
+					"path": [
+						"expense",
+						"all"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "Food"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all by start and end date",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Lunch at Cafe\",\r\n  \"amount\": 12.5,\r\n  \"category\": \"Food\",\r\n  \"date\": \"2025-08-14\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base_URL}}/expense/all?startDate=2025-08-01&endDate=2025-08-14",
+					"host": [
+						"{{Base_URL}}"
+					],
+					"path": [
+						"expense",
+						"all"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2025-08-01"
+						},
+						{
+							"key": "endDate",
+							"value": "2025-08-14"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all by category & start and end date Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Lunch at Cafe\",\r\n  \"amount\": 12.5,\r\n  \"category\": \"Food\",\r\n  \"date\": \"2025-08-14\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base_URL}}/expense/all?category=Food&startDate=2025-08-01&endDate=2025-08-14",
+					"host": [
+						"{{Base_URL}}"
+					],
+					"path": [
+						"expense",
+						"all"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "Food"
+						},
+						{
+							"key": "startDate",
+							"value": "2025-08-01"
+						},
+						{
+							"key": "endDate",
+							"value": "2025-08-14"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

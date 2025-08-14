@@ -12,10 +12,29 @@ export const createExpense = async (userId, data) => {
 /**
  * Get all expenses of a user
  */
-export const getAllExpenses = async (userId) => {
-  const expenses = await Expense.find({ user: userId }).sort({ date: -1 });
+export const getAllExpenses = async (userId, filters = {}) => {
+  const query = { user: userId };
+ console.log(query);
+  // Filter by category if provided
+  if (filters.category) {
+    query.category = filters.category;
+  }
+
+  // Filter by date range if provided
+  if (filters.startDate || filters.endDate) {
+    query.date = {};
+    if (filters.startDate) {
+      query.date.$gte = new Date(filters.startDate);
+    }
+    if (filters.endDate) {
+      query.date.$lte = new Date(filters.endDate);
+    }
+  }
+
+  const expenses = await Expense.find(query).sort({ date: -1 });
   return expenses;
 };
+
 
 /**
  * Update an expense by ID
