@@ -9,9 +9,26 @@ const router = express.Router();
 router.use(authMiddleware);
 
 // Routes
-router.post("/create", joiValidate(expanceValidation.expenseSchemaCreate), expanceController.create);
-router.get("/all", expanceController.getAll);
-router.patch("/update/:id", joiValidate(expanceValidation.expenseSchemaUpdate), expanceController.update);
-router.delete("/delete/:id", expanceController.remove);
+router.post(
+  "/create",
+  joiValidate(expanceValidation.expenseSchemaCreate),
+  authMiddleware,
+  expanceController.create
+);
+router.post(
+  "/create",
+  joiValidate(expanceValidation.expenseSchemaCreate),
+  authMiddleware,
+  expanceController.create
+);
+router.get("/all", authMiddleware, expanceController.getAll);
+router.patch(
+  "/update/:id",
+  joiValidate(expanceValidation.expenseSchemaUpdate),
+  authMiddleware,
+  expanceController.update
+);
+router.delete("/delete/:id", authMiddleware, expanceController.remove);
 
 export default router;
+

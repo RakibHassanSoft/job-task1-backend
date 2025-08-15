@@ -6,6 +6,7 @@ import createHttpError from "http-errors";
  */
 export const createExpense = async (userId, data) => {
   const expense = await Expense.create({ user: userId, ...data });
+
   return expense;
 };
 
@@ -14,7 +15,7 @@ export const createExpense = async (userId, data) => {
  */
 export const getAllExpenses = async (userId, filters = {}) => {
   const query = { user: userId };
- console.log(query);
+//  console.log(query);
   // Filter by category if provided
   if (filters.category) {
     query.category = filters.category;

@@ -1,56 +1,43 @@
-// app.js
 import express from "express";
-import morgan from "morgan";
 import cors from "cors";
-import helmet from "helmet";
 import cookieParser from "cookie-parser";
-import rateLimit from "express-rate-limit";
 import { globalErrorHandler } from "./middlewares/errorHandler.js";
 import { ApiError } from "./utils/ApiError.js";
-
-
-// Routes
 import routes from "./routes/routes.js";
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",           // local dev
+  "https://your-frontend-domain.com" // production frontend
+];
 
-// ===== Global Middlewares =====
-// Security headers
-app.use(helmet());
-// CORS
-app.use(cors({ origin: "*", credentials: true }));
-// Logging (only in dev)
-if (process.env.NODE_ENV === "development") {
-  app.use(morgan("dev"));
-}
-// JSON body parsing & cookies
-app.use(express.json({ limit: "10kb" }));
+// ===== Middlewares =====
+app.use(cors({
+  origin: function(origin, callback) {
+    // allow requests with no origin (like Postman)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = `The CORS policy for this site does not allow access from the specified Origin.`;
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true
+}));
+
+app.use(express.json());
 app.use(cookieParser());
-// Rate limiter
-app.use(
-  rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100,
-    standardHeaders: true,
-    legacyHeaders: false,
-    message: "Too many requests, please try again later."
-  })
-);
-
 
 // ===== Routes =====
 app.use("/api/v1", routes);
-app.use("/", (req, res) => {
+
+app.get("/", (req, res) => {
   res.send("Server is running successfully! Welcome to the API.");
 });
 
-
-
 // ===== 404 Handler =====
-app.use((req, res, next) => {
-  next(new ApiError(404, "Route not found"));
-});
+app.use((req, res, next) => next(new ApiError(404, "Route not found")));
 
 // ===== Error Handler =====
 app.use(globalErrorHandler);

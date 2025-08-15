@@ -7,10 +7,12 @@ import { config } from "../../config/env.provider.js";
 const cookieOptions = {
   httpOnly: true,
   secure: config.NODE_ENV === "production",
+  secure: config.NODE_ENV === "production",
   sameSite: config.NODE_ENV === "production" ? "none" : "lax",
   path: "/",
   maxAge: 24 * 60 * 60 * 1000, // 1 day
 };
+
 
 /**
  * Register a new user
@@ -43,11 +45,7 @@ export const loginUser = async ({ email, password }) => {
   return { user, token, cookieOptions };
 };
 
-/**
- * Get current user info
- * @param {string} userId
- * @returns {Object} - user
- */
+
 export const getMe = async (userId) => {
   const user = await User.findById(userId).select("name email");
   if (!user) throw createHttpError(404, "User not found");

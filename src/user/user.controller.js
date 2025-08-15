@@ -1,20 +1,20 @@
 import { config } from "../../config/env.provider.js";
 // import * as userService from "./user.service.js";
-import  {userService} from "./index.js";
+import { userService } from "./index.js";
 import { ApiResponse } from "../../utils/ApiResponse.js";
 import { responseHandler } from "../../utils/responseHandler.js";
 
 export const register = async (req, res, next) => {
   try {
-    const { user, token, cookieOptions } = await userService.registerUser(req.body);
+    const { user, token, cookieOptions } = await userService.registerUser(
+      req.body
+    );
     res.cookie(config.COOKIE_NAME, token, cookieOptions);
 
     responseHandler(res, {
-      user: { id: user._id, name: user.name, email: user.email
-      },
-      message: "Registered successfully"
+      user: { id: user._id, name: user.name, email: user.email },
+      message: "Registered successfully",
     });
- 
   } catch (err) {
     next(err);
   }
@@ -22,15 +22,18 @@ export const register = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
   try {
-    const { user, token, cookieOptions } = await userService.loginUser(req.body);
+    const { user, token, cookieOptions } = await userService.loginUser(
+      req.body
+    );
+
     res.cookie(config.COOKIE_NAME, token, cookieOptions);
-    
+
+    console.log("Cookie header set:", res.getHeader("Set-Cookie"));
+
     responseHandler(res, {
       user: { id: user._id, name: user.name, email: user.email },
-      message: "Logged in successfully"
+      message: "Logged in successfully",
     });
-
-
   } catch (err) {
     next(err);
   }
@@ -42,9 +45,8 @@ export const me = async (req, res, next) => {
 
     responseHandler(res, {
       user: { id: user._id, name: user.name, email: user.email },
-      message: "User info retrieved successfully"
+      message: "User info retrieved successfully",
     });
-
   } catch (err) {
     next(err);
   }
@@ -53,9 +55,8 @@ export const me = async (req, res, next) => {
 export const logout = async (_req, res) => {
   await userService.logoutUser();
   res.clearCookie(config.COOKIE_NAME, { path: "/", sameSite: "lax" });
-  
+
   return responseHandler(res, {
-    message: "Logged out successfully"
+    message: "Logged out successfully",
   });
 };
-

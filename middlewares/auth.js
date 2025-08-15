@@ -6,7 +6,9 @@ import { User } from "../src/user/index.js";
 
 const authMiddleware = async (req, res, next) => {
   try {
+
     const token = req.cookies[config.COOKIE_NAME] || req.headers.authorization?.split(" ")[1];
+
     if (!token) throw new ApiError(401, "Unauthorized");
 
     const decoded = jwt.verify(token, config.JWT_ACCESS_SECRET);
