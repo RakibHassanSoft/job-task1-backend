@@ -9,7 +9,7 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:5173",           // local dev
-  "https://your-frontend-domain.com" // production frontend
+  "jocular-fenglisu-bf33a6.netlify.app" // production frontend
 ];
 
 // ===== Middlewares =====
