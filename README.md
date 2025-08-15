@@ -40,7 +40,7 @@ Start the backend server:
 npm run dev  
 ```  
  
-### 3️⃣ Setup the Frontend  
+### 3️⃣ Setup the Backend  
 ```bash  
 npm init  
 npm install bcryptjs@^3.0.2 cookie-parser@^1.4.7 cors@^2.8.5 dotenv@^17.2.1 express@^5.1.0 express-rate-limit@^8.0.1 helmet@^8.1.0 http-errors@^2.0.0 joi@^18.0.0 jsonwebtoken@^9.0.2 mongoose@^8.17.1 morgan@^1.10.1 validator@^13.15.15 zod@^4.0.17
