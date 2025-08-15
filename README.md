@@ -118,11 +118,11 @@ Visit: **http://localhost:Port/api/v1** to view the app.
 
 ## API Endpoints  
  
-| Method | Endpoint        | Description       |  
-|--------|----------------|-------------------|  
-| POST   | `/expenses`    | Add new expense   |  
-| GET    | `/expenses`    | Get all expenses  |  
-| PATCH  | `/expenses/:id`| Update expense    |  
-| DELETE | `/expenses/:id`| Delete expense    |  
+| Method | Endpoint         | Description       |  
+|--------|----------------------|-------------------|  
+| POST   | `/expense/create`.   | Add new expense   |  
+| GET    | `/expense/all`       | Get all expenses  |  
+| PATCH  | `/expense/update/:id`| Update expense    |  
+| DELETE | `/expense/delete/:id`| Delete expense    |  
  
 
