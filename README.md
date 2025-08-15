@@ -14,7 +14,7 @@ git clone https://github.com/RakibHassanSoft/job-task1-backend.git
  
 ### 2️⃣ Setup the Backend  
 ```bash  
-cd backend  
+cd  job-task1-backend
 npm install  
 ```  
 Create a `.env` file in the backend folder:  
@@ -120,7 +120,7 @@ Visit: **http://localhost:Port/api/v1** to view the app.
  
 | Method | Endpoint         | Description       |  
 |--------|----------------------|-------------------|  
-| POST   | `/expense/create`.   | Add new expense   |  
+| POST   | `/expense/create`    | Add new expense   |  
 | GET    | `/expense/all`       | Get all expenses  |  
 | PATCH  | `/expense/update/:id`| Update expense    |  
 | DELETE | `/expense/delete/:id`| Delete expense    |  
