@@ -7,15 +7,23 @@ import routes from "./routes/routes.js";
 
 const app = express();
 
+// ===== Allowed origins =====
 const allowedOrigins = [
-  "http://localhost:5173",           // local dev
-  "jocular-fenglisu-bf33a6.netlify.app" // production frontend
+  "http://localhost:5173", // local dev
+  "https://jocular-fenglisu-bf33a6.netlify.app" // production frontend
 ];
 
 // ===== Middlewares =====
 app.use(cors({
-  origin: "*",          // <-- allow all origins
-  credentials: true,    // allow cookies
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true); // allow Postman or server-to-server requests
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS policy does not allow this origin"), false);
+    }
+  },
+  credentials: true, // required for cookies
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
