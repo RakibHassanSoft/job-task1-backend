@@ -6,8 +6,7 @@ import { config } from "../../config/env.provider.js";
 
 const cookieOptions = {
   httpOnly: true,
-  secure: config.NODE_ENV === "production",
-  secure: config.NODE_ENV === "production",
+  secure: config.NODE_ENV === "production",  // only in production
   sameSite: config.NODE_ENV === "production" ? "none" : "lax",
   path: "/",
   maxAge: 24 * 60 * 60 * 1000, // 1 day
